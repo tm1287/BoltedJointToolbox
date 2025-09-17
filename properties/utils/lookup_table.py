@@ -36,21 +36,25 @@ class LookupTable:
 
         assert len(units) == len(raw_df.columns), "Ensure that each column only specifies one [unit]"
 
+        # Strip units and brackets from column names
+        clean_columns = raw_df.columns.str.replace(r'\s*\[.*?\]', '', regex=True)
+
         # Create a new DataFrame with PintArrays for the columns
         df_data = {}
         for i, col in enumerate(raw_df.columns):
+            clean_col = clean_columns[i]
             if i < len(units) and not pd.isna(units.iloc[i, 0]):
                 # Column has units, create PintArray
                 unit = units.iloc[i, 0]
                 try:
-                    df_data[col] = pd.Series(raw_df[col].values, dtype=f"pint[{unit}]")
+                    df_data[clean_col] = pd.Series(raw_df[col].values, dtype=f"pint[{unit}]")
                 except UndefinedUnitError:
                     raise ValueError(f"Unit \"{unit}\" in table {file_path} is not a recognized unit")
             else:
                 # Column has no units, keep as regular Series
-                df_data[col] = raw_df[col]
+                df_data[clean_col] = raw_df[col]
         
-        df = pd.DataFrame(raw_df)
+        df = pd.DataFrame(df_data)
 
         return cls(df, index_col)
     
