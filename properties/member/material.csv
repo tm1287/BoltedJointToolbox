@@ -1,0 +1,16 @@
+material,elastic_modulus [MPa],yield_strength [MPa]
+6061-T6,69000,276
+2024-T3,69000,345
+7075-T6,69000,503
+4140 Normalized at 870 C,207000,675
+4340 Normalized,207000,862
+304 Stainless Steel,193000,215
+316 Stainless Steel,193000,240
+17-4 Stainless Steel,193000,1000
+TI-6AL-4V GRADE 5,,1170
+Brass,,140
+5052 - H32,69000,193
+A500C,207000,345
+1020 Carbon Steel,207000,345
+1045 Carbon Steel,207000,310
+A36 Steel/Mild Steel,207000,250

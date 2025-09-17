@@ -57,3 +57,6 @@ class LookupTable:
     def get(self, key, field=None):
         row = self.df.loc[key]
         return row.to_dict() if field is None else row[field]
+
+    def get_entries(self):
+        return self.df.index.tolist()
