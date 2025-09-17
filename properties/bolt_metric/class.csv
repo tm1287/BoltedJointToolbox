@@ -1,0 +1,8 @@
+class,min_tensile_yield_strength [MPa],min_proof_strength [MPa]
+4.6,400,225
+4.8,420,310
+5.8,520,380
+8.8,830,600
+9.8,900,650
+10.9,1040,830
+12.9,1220,970
